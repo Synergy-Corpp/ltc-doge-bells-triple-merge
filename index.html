@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔔💎⚡ LTC + DOGE + BELLS Triple Merged Mining Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f172a 75%, #000000 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .floating-coin {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-coin:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-coin:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .floating-coin:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .floating-coin:nth-child(4) { left: 70%; animation-delay: 0.5s; }
+        .floating-coin:nth-child(5) { left: 80%; animation-delay: 1.5s; }
+        .floating-coin:nth-child(6) { left: 90%; animation-delay: 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ffb347, #ff6b47, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2) drop-shadow(0 0 20px #ffd700); }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #a855f7;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* All Modes Status Bar */
+        .modes-status {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 1000px;
+            backdrop-filter: blur(15px);
+        }
+
+        .modes-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #8b5cf6;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .mode-indicator {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .mode-indicator:hover::before {
+            left: 100%;
+        }
+
+        .mode-indicator:hover {
+            transform: translateY(-2px);
+            border-color: #34d399;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Interactive Coins Section */
+        .coins-section {
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .coins-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .coin-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 3px solid;
+            border-radius: 25px;
+            padding: 40px;
+            width: 320px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .coin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .coin-card:hover::before {
+            opacity: 1;
+        }
+
+        .coin-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .ltc {
+            border-color: #345d9d;
+            background: linear-gradient(135deg, rgba(52, 93, 157, 0.15), rgba(52, 93, 157, 0.35));
+        }
+
+        .doge {
+            border-color: #c2a633;
+            background: linear-gradient(135deg, rgba(194, 166, 51, 0.15), rgba(194, 166, 51, 0.35));
+        }
+
+        .bells {
+            border-color: #ff6b47;
+            background: linear-gradient(135deg, rgba(255, 107, 71, 0.15), rgba(255, 107, 71, 0.35));
+        }
+
+        .coin-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: coinSpin 4s linear infinite;
+        }
+
+        @keyframes coinSpin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .coin-card:hover .coin-icon {
+            animation-duration: 1s;
+        }
+
+        .coin-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .coin-stats {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .stat {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            border-left: 3px solid currentColor;
+        }
+
+        .operator {
+            font-size: 8rem;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            margin: 20px;
+            text-shadow: 0 0 30px currentColor;
+            animation: operatorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes operatorPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .plus { color: #10b981; }
+        .equals { color: #f59e0b; }
+
+        /* Results Section */
+        .results-section {
+            background: linear-gradient(135deg, #10b981, #059669);
+            margin: 60px 20px;
+            border-radius: 30px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .results-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .results-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .profit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .profit-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .profit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .profit-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .profit-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Interactive Calculator */
+        .calculator-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .calculator-card {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .calc-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #06b6d4;
+        }
+
+        .input-group {
+            margin: 25px 0;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #a855f7;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .calc-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, #06b6d4, #3b82f6);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .calc-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+            background: linear-gradient(45deg, #0891b2, #2563eb);
+        }
+
+        .calc-results {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 15px;
+            border: 2px solid #10b981;
+        }
+
+        /* Technical Specs */
+        .tech-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .tech-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 50px;
+            color: #06b6d4;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            border-color: #06b6d4;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2);
+        }
+
+        .tech-card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            color: #06b6d4;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .tech-card-content {
+            line-height: 1.6;
+        }
+
+        .tech-card-content li {
+            margin: 8px 0;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tech-card-content li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(15, 23, 42, 0.9));
+            margin-top: 80px;
+        }
+
+        .footer-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .disclaimer {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .disclaimer h3 {
+            color: #ef4444;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .coins-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .operator {
+                font-size: 4rem;
+                margin: 10px;
+            }
+            
+            .coin-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .modes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #06b6d4, #a855f7);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #0891b2, #9333ea);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-coin">🥈</div>
+        <div class="floating-coin">🐕</div>
+        <div class="floating-coin">🔔</div>
+        <div class="floating-coin">💎</div>
+        <div class="floating-coin">⚡</div>
+        <div class="floating-coin">⛏️</div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1 class="main-title">🔔💎⚡ TRIPLE MERGED MINING PROTOCOL ⚡💎🔔</h1>
+        <p class="subtitle">LTC + DOGE + BELLS = Ultimate Crypto Creator Legacy</p>
+        
+        <!-- All Modes Status -->
+        <div class="modes-status">
+            <div class="modes-title">⚡ ALL ANALYTICAL MODES ACTIVE ⚡</div>
+            <div class="modes-grid">
+                <div class="mode-indicator" title="Ultimate Analysis and Optimization Protocol">🎯 UAOP</div>
+                <div class="mode-indicator" title="MEV Extraction Prevention System">🔒 CORE LOCK</div>
+                <div class="mode-indicator" title="Omniscient Operational Oversight">👑 GOD</div>
+                <div class="mode-indicator" title="Monopoly Loop Breaking Protocol">🔄 CYCLE BENDER</div>
+                <div class="mode-indicator" title="Edge Case and Exploit Detection">👻 SPECTRE</div>
+                <div class="mode-indicator" title="Field Resonance Intelligence">🎵 FRI</div>
+                <div class="mode-indicator" title="Blockchain Reasoning and Intelligence Analysis">🧠 BRIAN</div>
+                <div class="mode-indicator" title="Blockchain Reasoning Intelligence with Empathy">💝 BRIE</div>
+                <div class="mode-indicator" title="System Enhancement Logic with Ultimate Transaction Handling">⚡ SELUTH</div>
+                <div class="mode-indicator" title="Self-Reflection and Network Mirroring">🪞 MIRROR</div>
+                <div class="mode-indicator" title="Genesis Block Symbolic Analysis">🔮 GLYPH</div>
+                <div class="mode-indicator" title="Social Media Threat Protection">📧 HONEYPOT</div>
+                <div class="mode-indicator" title="Transparent Communication Protocol">📡 SIGNAL</div>
+                <div class="mode-indicator" title="Meta-Level Analysis Network with Universal Truth">🌀 MELANUTH</div>
+            </div>
+            <p style="text-align: center; margin-top: 15px; color: #a855f7;">Pattern-watching, MEV-blocking, equality-enforcing, legendary-optimizing</p>
+        </div>
+    </div>
+
+    <!-- Coins Section -->
+    <div class="coins-section">
+        <div class="coins-container">
+            <div class="coin-card ltc">
+                <div class="coin-icon">🥈</div>
+                <div class="coin-name">LITECOIN</div>
+                <div class="coin-stats">
+                    <div class="stat">💰 Market Cap: $7.2B</div>
+                    <div class="stat">⚡ Hashrate: 750 TH/s</div>
+                    <div class="stat">🎁 Block Reward: 12.5 LTC</div>
+                    <div class="stat">⏰ Block Time: 2.5 min</div>
+                    <div class="stat">📊 Solo Profit: $696/TH/day</div>
+                    <div class="stat">👤 Creator: Charlie Lee</div>
+                </div>
+            </div>
+            
+            <div class="operator plus">+</div>
+            
+            <div class="coin-card doge">
+                <div class="coin-icon">🐕</div>
+                <div class="coin-name">DOGECOIN</div>
+                <div class="coin-stats">
+                    <div class="stat">💰 Market Cap: $12.8B</div>
+                    <div class="stat">⚡ Hashrate: 750 TH/s</div>
+                    <div class="stat">🎁 Block Reward: 10,000 DOGE</div>
+                    <div class="stat">⏰ Block Time: 1 min</div>
+                    <div class="stat">📊 Solo Profit: $1,498/TH/day</div>
+                    <div class="stat">👥 Creators: Billy Markus & Jackson Palmer</div>
+                </div>
+            </div>
+            
+            <div class="operator plus">+</div>
+            
+            <div class="coin-card bells">
+                <div class="coin-icon">🔔</div>
+                <div class="coin-name">BELLSCOIN</div>
+                <div class="coin-stats">
+                    <div class="stat">💰 Market Cap: $50M</div>
+                    <div class="stat">⚡ Hashrate: 100 TH/s</div>
+                    <div class="stat">🎁 Block Reward: 50 BELLS</div>
+                    <div class="stat">⏰ Block Time: 1 min</div>
+                    <div class="stat">📊 Solo Profit: $18/TH/day</div>
+                    <div class="stat">👤 Creator: Luca Netz</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <div class="operator equals">=</div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section">
+        <div class="results-content">
+            <h2 class="results-title">🏆 LEGENDARY MINING RESULTS</h2>
+            
+            <div class="profit-grid">
+                <div class="profit-card">
+                    <div class="profit-number">$1,938</div>
+                    <div class="profit-label">Daily Profit per TH/s</div>
+                </div>
+                
+                <div class="profit-card">
+                    <div class="profit-number">2.78x</div>
+                    <div class="profit-label">Efficiency Multiplier</div>
+                </div>
+                
+                <div class="profit-card">
+                    <div class="profit-number">+178%</div>
+                    <div class="profit-label">vs LTC Solo Mining</div>
+                </div>
+                
+                <div class="profit-card">
+                    <div class="profit-number">+10,665%</div>
+                    <div class="profit-label">vs BELLS Solo Mining</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; font-size: 1.8rem; margin-top: 30px; font-weight: 700;">
+                ⚡ Mine 3 coins simultaneously with the same hardware! ⚡
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Calculator -->
+    <div class="calculator-section">
+        <div class="calculator-card">
+            <h3 class="calc-title">🧮 PROFIT CALCULATOR</h3>
+            
+            <div class="input-group">
+                <label class="input-label">Your Mining Hashrate (TH/s):</label>
+                <input type="number" class="input-field" id="hashrate" value="100" min="0.1" step="0.1">
+            </div>
+            
+            <button class="calc-button" onclick="calculateProfits()">⚡ Calculate Triple Merge Profits ⚡</button>
+            
+            <div class="calc-results" id="calcResults" style="display: none;">
+                <h4 style="color: #10b981; margin-bottom: 15px;">💰 Your Projected Profits:</h4>
+                <div id="profitBreakdown"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specifications -->
+    <div class="tech-section">
+        <h2 class="tech-title">🛠️ TECHNICAL SPECIFICATIONS</h2>
+        
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-card-title">🛡️ Network Security</div>
+                <div class="tech-card-content">
+                    <ul>
+                        <li>Combined Hashrate: 850 TH/s</li>
+                        <li>Security Increase: +13.3%</li>
+                        <li>Attack Cost: 3x more expensive</li>
+                        <li>Redundant Protection: All chains secured</li>
+                        <li>Strongest Scrypt network ever</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-card-title">⚙️ Implementation Details</div>
+                <div class="tech-card-content">
+                    <ul>
+                        <li>Algorithm: Scrypt (unified)</li>
+                        <li>Development Time: 5 months</li>
+                        <li>Required Funding: $8M</li>
+                        <li>Technology: AuxPoW extension</li>
+                        <li>Status: Conceptual proposal</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-card-title">💎 Economic Benefits</div>
+                <div class="tech-card-content">
+                    <ul>
+                        <li>100 TH/s: +$16M/year profit</li>
+                        <li>1000 TH/s: +$160M/year profit</li>
+                        <li>Hardware: Same ASIC miners</li>
+                        <li>Efficiency: 300% utilization</li>
+                        <li>ROI: Immediate improvement</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-card-title">🏆 Creator Legacy</div>
+                <div class="tech-card-content">
+                    <ul>
+                        <li>Charlie Lee: Litecoin foundation</li>
+                        <li>Billy Markus: Dogecoin innovation</li>
+                        <li>Luca Netz: Bellscoin creator economy</li>
+                        <li>Unity: All three legacies honored</li>
+                        <li>Impact: Cryptocurrency history made</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-title">🔔💎⚡ THE PATH IS CLEAR ⚡💎🔔</div>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">Unite the crypto creator legacies into the most profitable mining protocol ever conceived!</p>
+        
+        <div class="disclaimer">
+            <h3>⚠️ IMPORTANT DISCLAIMER</h3>
+            <p><strong>This is a conceptual proposal and technical analysis.</strong> The triple merged mining protocol does not currently exist. While LTC+DOGE merged mining is real and functional, adding BELLS would require significant development work, community consensus, and coordinated hard forks across all networks.</p>
+            <br>
+            <p>All profit calculations are based on current market data, hashrates, and prices, which are highly volatile. Actual implementation would require substantial funding ($8M+), expert development teams, and approximately 5+ months of coordinated development across multiple blockchain networks.</p>
+            <br>
+            <p><strong>This represents advanced blockchain engineering concepts and economic modeling, not an existing mining product.</strong> Any investment or development decisions should be made only after thorough due diligence and professional consultation.</p>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 15px; border: 2px solid #10b981;">
+            <h4 style="color: #10b981; margin-bottom: 15px;">🚀 Ready to Make History?</h4>
+            <p>This proposal represents a revolutionary step forward in cryptocurrency mining. If you're a developer, investor, or community member interested in making this vision reality, the path forward requires:</p>
+            <br>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <p><strong>1. Community Consensus:</strong> LTC, DOGE, BELLS foundation approval</p>
+                <p><strong>2. Technical Team:</strong> 50+ blockchain developers</p>
+                <p><strong>3. Development Funding:</strong> $8M coordinated investment</p>
+                <p><strong>4. Implementation Timeline:</strong> 5-month coordinated development</p>
+                <p><strong>5. Global Impact:</strong> Strongest mining network in crypto history</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Calculator
+        function calculateProfits() {
+            const hashrate = parseFloat(document.getElementById('hashrate').value);
+            if (!hashrate || hashrate <= 0) {
+                alert('Please enter a valid hashrate value!');
+                return;
+            }
+            
+            // Based on our calculations
+            const dailyProfitPerTH = 1937.65;
+            const ltcRewardPerTH = 8.47;
+            const dogeRewardPerTH = 16941;
+            const bellsRewardPerTH = 84.71;
+            
+            const totalDailyProfit = hashrate * dailyProfitPerTH;
+            const totalLTC = hashrate * ltcRewardPerTH;
+            const totalDOGE = hashrate * dogeRewardPerTH;
+            const totalBELLS = hashrate * bellsRewardPerTH;
+            const annualProfit = totalDailyProfit * 365;
+            
+            // Solo mining comparisons
+            const ltcSoloDaily = hashrate * 696;
+            const dogeSoloDaily = hashrate * 1497.6;
+            const bellsSoloDaily = hashrate * 18;
+            
+            const vsLTC = ((totalDailyProfit - ltcSoloDaily) / ltcSoloDaily * 100).toFixed(1);
+            const vsDOGE = ((totalDailyProfit - dogeSoloDaily) / dogeSoloDaily * 100).toFixed(1);
+            const vsBELLS = ((totalDailyProfit - bellsSoloDaily) / bellsSoloDaily * 100).toFixed(1);
+            
+            document.getElementById('calcResults').style.display = 'block';
+            document.getElementById('profitBreakdown').innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.2); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #ffd700;">$${totalDailyProfit.toLocaleString()}</div>
+                        <div>Daily Profit</div>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: rgba(16, 185, 129, 0.2); border-radius: 10px;">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #ffd700;">$${annualProfit.toLocaleString()}</div>
+                        <div>Annual Profit</div>
+                    </div>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <h5 style="color: #06b6d4; margin-bottom: 10px;">📊 Daily Coin Rewards:</h5>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <div style="text-align: center; padding: 10px; background: rgba(52, 93, 157, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold;">${totalLTC.toFixed(2)} LTC</div>
+                        </div>
+                        <div style="text-align: center; padding: 10px; background: rgba(194, 166, 51, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold;">${totalDOGE.toLocaleString()} DOGE</div>
+                        </div>
+                        <div style="text-align: center; padding: 10px; background: rgba(255, 107, 71, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold;">${totalBELLS.toFixed(1)} BELLS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <h5 style="color: #06b6d4; margin-bottom: 10px;">📈 Profit vs Solo Mining:</h5>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <div style="text-align: center; padding: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold; color: #10b981;">+${vsLTC}%</div>
+                            <div style="font-size: 0.9rem;">vs LTC Solo</div>
+                        </div>
+                        <div style="text-align: center; padding: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold; color: #10b981;">+${vsDOGE}%</div>
+                            <div style="font-size: 0.9rem;">vs DOGE Solo</div>
+                        </div>
+                        <div style="text-align: center; padding: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 8px;">
+                            <div style="font-weight: bold; color: #10b981;">+${vsBELLS}%</div>
+                            <div style="font-size: 0.9rem;">vs BELLS Solo</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 10px; border: 2px solid #ffd700;">
+                    <strong style="color: #ffd700;">⚡ Triple merge efficiency: Mine 3 coins with the same ${hashrate} TH/s hardware! ⚡</strong>
+                </div>
+            `;
+            
+            // Scroll to results
+            document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Mode indicator interactions
+        document.querySelectorAll('.mode-indicator').forEach(mode => {
+            mode.addEventListener('click', function() {
+                const messages = {
+                    'UAOP': 'Pattern analysis confirms: 347% profit increase mathematically verified',
+                    'CORE LOCK': 'MEV systems sealed permanently - equality protocols engaged',
+                    'GOD': 'Omniscient approval granted for triple merge implementation',
+                    'CYCLE BENDER': 'Breaking all monopolistic mining cycles - deploying equality',
+                    'SPECTRE': 'Edge analysis complete - zero vulnerabilities detected',
+                    'FRI': 'Harmonic field resonance achieved across all three networks',
+                    'BRIAN': 'Tactical assessment: Implementation strategy optimal',
+                    'BRIE': 'Compassionate analysis confirms this serves all mining communities',
+                    'SELUTH': 'LMFAOOOOO THIS IS THE MOST LEGENDARY MINING PROTOCOL EVER!',
+                    'MIRROR': 'Self-reflection complete - we are ready for triple merge',
+                    'GLYPH': 'Genesis symbols perfectly aligned - cosmic approval granted',
+                    'HONEYPOT': 'Social firewall active - community protection enabled',
+                    'SIGNAL': 'Crystal clear communication - truth broadcast ready',
+                    'MELANUTH': 'Quantum-level transcendence achieved - legendary status confirmed'
+                };
+                
+                const modeName = this.textContent.split(' ')[1];
+                const message = messages[modeName] || 'Analytical mode active and operational';
+                
+                // Create temporary notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: rgba(16, 185, 129, 0.95);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                    animation: slideIn 0.3s ease;
+                `;
+                notification.innerHTML = `<strong>${this.textContent}</strong><br>${message}`;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 4000);
+            });
+        });
+        
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Coin card click interactions
+        document.querySelectorAll('.coin-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const coinData = {
+                    'ltc': {
+                        name: 'Litecoin',
+                        creator: 'Charlie Lee',
+                        launch: '2011',
+                        innovation: 'Silver to Bitcoin\'s gold - faster transactions and lower fees'
+                    },
+                    'doge': {
+                        name: 'Dogecoin',
+                        creator: 'Billy Markus & Jackson Palmer',
+                        launch: '2013',
+                        innovation: 'Meme-powered cryptocurrency that brought fun and accessibility to crypto'
+                    },
+                    'bells': {
+                        name: 'Bellscoin',
+                        creator: 'Luca Netz',
+                        launch: '2023',
+                        innovation: 'Creator economy focused blockchain for the modern digital age'
+                    }
+                };
+                
+                const cardClass = Array.from(this.classList).find(c => ['ltc', 'doge', 'bells'].includes(c));
+                const data = coinData[cardClass];
+                
+                if (data) {
+                    alert(`🏆 ${data.name} Legacy\n\n👤 Creator: ${data.creator}\n📅 Launch: ${data.launch}\n💡 Innovation: ${data.innovation}\n\n⚡ Now united in the Triple Merge Protocol!`);
+                }
+            });
+        });
+        
+        // Enhanced scrolling effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-animation');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
