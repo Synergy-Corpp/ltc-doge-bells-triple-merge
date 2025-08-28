@@ -6,6 +6,7 @@
     <title>🔔💎⚡ LTC + DOGE + BELLS Triple Merged Mining Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="enhanced-styles.css">
+    <script src="god-mode-enhancements.js"></script>
     <style>
         * {
             margin: 0;
@@ -21,7 +22,7 @@
             position: relative;
         }
 
-        /* Animated Background */
+        /* 🌌 GALACTIC ANIMATED BACKGROUND - GOD MODE ACTIVATED 🌌 */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -29,13 +30,69 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.15;
+            overflow: hidden;
+        }
+
+        .cosmic-layer {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            animation: cosmicRotate 30s linear infinite;
+        }
+
+        @keyframes cosmicRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.1); }
+        }
+
+        .star-field {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.9), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .energy-orb {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+            animation: energyPulse 4s ease-in-out infinite;
+        }
+
+        .energy-orb:nth-child(9) { top: 20%; left: 15%; animation-delay: 0s; }
+        .energy-orb:nth-child(10) { top: 60%; right: 20%; animation-delay: 2s; }
+        .energy-orb:nth-child(11) { bottom: 30%; left: 70%; animation-delay: 4s; }
+
+        @keyframes energyPulse {
+            0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.4; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
         }
 
         .floating-coin {
             position: absolute;
-            font-size: 2rem;
-            animation: float 6s ease-in-out infinite;
+            font-size: 2.5rem;
+            animation: float 8s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
         }
 
         .floating-coin:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -44,10 +101,14 @@
         .floating-coin:nth-child(4) { left: 70%; animation-delay: 0.5s; }
         .floating-coin:nth-child(5) { left: 80%; animation-delay: 1.5s; }
         .floating-coin:nth-child(6) { left: 90%; animation-delay: 2.5s; }
+        .floating-coin:nth-child(7) { left: 50%; animation-delay: 3s; }
+        .floating-coin:nth-child(8) { left: 60%; animation-delay: 3.5s; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(180deg); }
+            0%, 100% { transform: translateY(100vh) rotate(0deg) scale(1); }
+            25% { transform: translateY(75vh) rotate(90deg) scale(1.1); }
+            50% { transform: translateY(50vh) rotate(180deg) scale(0.9); }
+            75% { transform: translateY(25vh) rotate(270deg) scale(1.2); }
         }
 
         /* Header Section */
@@ -726,12 +787,24 @@
 <body>
     <!-- Animated Background -->
     <div class="bg-animation">
+        <!-- Cosmic layers for galaxy effect -->
+        <div class="cosmic-layer"></div>
+        <div class="star-field"></div>
+        
+        <!-- Enhanced floating elements -->
         <div class="floating-coin">🥈</div>
         <div class="floating-coin">🐕</div>
         <div class="floating-coin">🔔</div>
         <div class="floating-coin">💎</div>
         <div class="floating-coin">⚡</div>
         <div class="floating-coin">⛏️</div>
+        <div class="floating-coin">🌌</div>
+        <div class="floating-coin">🔥</div>
+        
+        <!-- Energy orbs for galactic effect -->
+        <div class="energy-orb"></div>
+        <div class="energy-orb"></div>
+        <div class="energy-orb"></div>
     </div>
 
     <!-- Header -->
@@ -799,12 +872,12 @@
                 <div class="coin-icon">🔔</div>
                 <div class="coin-name">BELLSCOIN</div>
                 <div class="coin-stats">
-                    <div class="stat">💰 Market Cap: $50M</div>
+                    <div class="stat">💰 Market Cap: $10.2M</div>
                     <div class="stat">⚡ Hashrate: 100 TH/s</div>
                     <div class="stat">🎁 Block Reward: 50 BELLS</div>
                     <div class="stat">⏰ Block Time: 1 min</div>
                     <div class="stat">📊 Solo Profit: $18/TH/day</div>
-                    <div class="stat">👤 Creator: Luca Netz</div>
+                    <div class="stat">👤 Creator: Billy Markus (8 days before DOGE)</div>
                 </div>
             </div>
         </div>
@@ -871,8 +944,9 @@
         <h2 class="tech-title">🛠️ TECHNICAL SPECIFICATIONS</h2>
         
         <div class="tech-grid">
-            <div class="tech-card">
+            <div class="tech-card enhanced-card">
                 <div class="tech-card-title">🛡️ Network Security</div>
+                <div class="live-indicator">LIVE DATA</div>
                 <div class="tech-card-content">
                     <ul>
                         <li>Combined Hashrate: 850 TH/s</li>

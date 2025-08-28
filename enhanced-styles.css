@@ -314,6 +314,214 @@
     transform: translateY(-2px);
 }
 
+/* 👑 GOD MODE ENHANCEMENTS - GALACTIC LEVEL 👑 */
+.god-mode-card {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.1) 0%, 
+        rgba(139, 92, 246, 0.1) 50%, 
+        rgba(6, 182, 212, 0.1) 100%);
+    border: 3px solid;
+    border-image: linear-gradient(45deg, #ffd700, #8b5cf6, #06b6d4) 1;
+    animation: godModeGlow 3s ease-in-out infinite alternate;
+}
+
+.god-mode-indicator {
+    background: linear-gradient(45deg, #ffd700, #ff6b47, #8b5cf6);
+    animation: crownPulse 2s ease-in-out infinite;
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+@keyframes godModeGlow {
+    0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), 0 0 60px rgba(139, 92, 246, 0.4); }
+}
+
+@keyframes crownPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 🌌 GALACTIC MODE EFFECTS */
+.galactic-card {
+    background: radial-gradient(circle at center, 
+        rgba(139, 92, 246, 0.2) 0%, 
+        rgba(6, 182, 212, 0.1) 30%, 
+        rgba(16, 185, 129, 0.1) 60%, 
+        transparent 100%);
+    border: 2px solid;
+    border-image: conic-gradient(#8b5cf6, #06b6d4, #10b981, #ffd700, #8b5cf6) 1;
+    animation: galacticRotate 8s linear infinite;
+}
+
+.galactic-indicator {
+    background: conic-gradient(#8b5cf6, #06b6d4, #10b981, #ffd700, #8b5cf6);
+    animation: galaxySpin 4s linear infinite;
+    font-weight: 900;
+}
+
+@keyframes galacticRotate {
+    0% { border-image-source: conic-gradient(#8b5cf6, #06b6d4, #10b981, #ffd700, #8b5cf6); }
+    100% { border-image-source: conic-gradient(#ffd700, #8b5cf6, #06b6d4, #10b981, #ffd700); }
+}
+
+@keyframes galaxySpin {
+    0% { background: conic-gradient(#8b5cf6, #06b6d4, #10b981, #ffd700, #8b5cf6); }
+    100% { background: conic-gradient(#ffd700, #8b5cf6, #06b6d4, #10b981, #ffd700); }
+}
+
+/* LIVE CHART CONTAINERS */
+.live-chart-container {
+    width: 100%;
+    height: 150px;
+    margin: 15px 0;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.chart-widget {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.chart-loading {
+    animation: chartPulse 2s ease-in-out infinite;
+}
+
+@keyframes chartPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* LIVE PRICE INDICATORS */
+.live-price {
+    border: 2px solid #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    animation: priceGlow 3s ease-in-out infinite;
+}
+
+.market-cap {
+    border: 2px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+}
+
+@keyframes priceGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+}
+
+/* ENHANCED LIVE STATS */
+.live-stats {
+    position: relative;
+    overflow: hidden;
+}
+
+.live-stats::before {
+    content: 'LIVE';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    animation: liveBlink 2s infinite;
+}
+
+.god-mode-stats::before {
+    content: 'GOD';
+    background: linear-gradient(45deg, #ffd700, #ff6b47);
+    animation: godBlink 1.5s infinite;
+}
+
+@keyframes liveBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+@keyframes godBlink {
+    0%, 50% { opacity: 1; transform: scale(1); }
+    51%, 100% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* ENHANCED MODES GRID */
+.mode-indicator {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.mode-indicator:hover {
+    transform: scale(1.05) rotate(2deg);
+    z-index: 10;
+}
+
+.mode-indicator.god-mode {
+    background: linear-gradient(45deg, #ffd700, #ff6b47, #8b5cf6);
+    animation: godModeShine 2s linear infinite;
+}
+
+.mode-indicator.fri-mode {
+    background: linear-gradient(45deg, #10b981, #06b6d4, #8b5cf6);
+    animation: friHarmonic 3s ease-in-out infinite;
+}
+
+@keyframes godModeShine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes friHarmonic {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+    33% { transform: scale(1.02); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+    66% { transform: scale(1.01); box-shadow: 0 0 12px rgba(139, 92, 246, 0.4); }
+}
+
+/* PERFECT BOX ALIGNMENT - ALL ELEMENTS */
+.perfect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+    justify-items: center;
+}
+
+.perfect-box {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(6, 182, 212, 0.3);
+    transition: all 0.3s ease;
+}
+
+.perfect-box:hover {
+    transform: translateY(-10px);
+    border-color: rgba(6, 182, 212, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
 /* Enhanced Print Styles */
 @media print {
     .no-print { display: none !important; }
