@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔔💎⚡ LTC + DOGE + BELLS Triple Merged Mining Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="enhanced-styles.css">
     <style>
         * {
             margin: 0;
@@ -169,6 +170,10 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
         }
 
         .coin-card::before {
@@ -317,6 +322,11 @@
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
         }
 
         .profit-card:hover {
@@ -514,25 +524,183 @@
             font-family: 'Orbitron', monospace;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        /* Enhanced Mobile Design */
+        @media (max-width: 1200px) {
             .coins-container {
-                flex-direction: column;
                 gap: 20px;
             }
             
-            .operator {
-                font-size: 4rem;
-                margin: 10px;
+            .coin-card {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 15px;
             }
             
-            .coin-card {
-                width: 100%;
-                max-width: 300px;
+            .main-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+            
+            .modes-status {
+                margin: 20px 10px;
+                padding: 15px;
             }
             
             .modes-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .mode-indicator {
+                padding: 6px;
+                font-size: 0.7rem;
+            }
+            
+            .coins-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 10px;
+            }
+            
+            .operator {
+                font-size: 3rem;
+                margin: 5px 0;
+                transform: rotate(90deg);
+            }
+            
+            .coin-card {
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+                padding: 25px 20px;
+            }
+            
+            .coin-icon {
+                font-size: 4rem;
+                margin-bottom: 15px;
+            }
+            
+            .coin-name {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .results-section {
+                margin: 40px 10px;
+                padding: 30px 20px;
+            }
+            
+            .results-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .profit-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .profit-card {
+                padding: 20px 15px;
+            }
+            
+            .profit-number {
+                font-size: 1.8rem;
+            }
+            
+            .calculator-section {
+                padding: 0 15px;
+            }
+            
+            .calculator-card {
+                padding: 25px 20px;
+            }
+            
+            .calc-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .tech-section {
+                padding: 0 15px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tech-card {
+                padding: 20px;
+            }
+            
+            .footer {
+                padding: 40px 15px;
+            }
+            
+            .disclaimer {
+                margin: 30px 10px;
+                padding: 20px;
+            }
+        }
+
+        /* Tablet Specific Adjustments */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .coins-container {
+                gap: 25px;
+            }
+            
+            .coin-card {
+                width: 260px;
+                padding: 30px 25px;
+            }
+            
+            .operator {
+                font-size: 5rem;
+                margin: 15px;
+            }
+            
+            .profit-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .modes-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Ultra-wide screen optimization */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            .coins-container {
+                gap: 60px;
+            }
+            
+            .coin-card {
+                width: 350px;
+                padding: 50px;
+            }
+            
+            .operator {
+                font-size: 10rem;
             }
         }
 
